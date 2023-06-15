@@ -1,0 +1,95 @@
+<div id="main">
+
+  <div id="page">
+    <canvas id="does-not-exist"></canvas>
+    <div class="fixed-hero">
+      <section class="hero container">
+        <div class="hero-tittle-one test">
+          Angular of the day
+        </div>
+      </section>
+      
+      <a href="#page2" style="font-size: 20px;">page 2</a>
+
+      <div class="marquee">
+        <div class="marquee-container">
+          <div class="marquee-part">Techsembly</div>
+          <div class="marquee-part">project</div>
+          <div class="marquee-part">Hype</div>
+          <div class="marquee-part">Angular</div>
+          <div class="marquee-part">Blogs</div>
+          <div class="marquee-part">Code</div>
+          <div class="marquee-part">typescript</div>
+          <div class="marquee-part">Techsembly</div>
+          <div class="marquee-part">project</div>
+          <div class="marquee-part">Hype</div>
+          <div class="marquee-part">Angular</div>
+          <div class="marquee-part">Blogs</div>
+          <div class="marquee-part">Code</div>
+          <div class="marquee-part">typescript</div>
+          <div class="marquee-part">Techsembly</div>
+          <div class="marquee-part">project</div>
+          <div class="marquee-part">Hype</div>
+          <div class="marquee-part">Angular</div>
+          <div class="marquee-part">Blogs</div>
+          <div class="marquee-part">Code</div>
+          <div class="marquee-part">typescript</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="page1">
+
+
+
+    <div class="projects-layout" *ngIf="blogData$ | async as blogData">
+      <!-- <pre>
+          {{ blogData | json }}
+        </pre> -->
+      <!-- cards listing  -->
+      <div class="projects-card" *ngFor="let data of blogData.items">
+        <div class="card-top">
+          <h3 class="project-title">{{data.fields.heroHead}}</h3>
+          <p class="project-title-short">{{data.fields.heroContent}}</p>
+          <a [routerLink]="['view',data.sys.id]" target="_blank" class="project-link">
+            <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M0 6.9024L10.7113 6.903L7.07799 10.7226L8.2912 12L14 5.9982L8.29576 0L7.08141 1.2774L10.7148 5.097H0V6.9024Z"
+                fill="black"></path>
+            </svg>
+          </a>
+        </div>
+        <div class="project-image"><img [src]="data.fields.heroImg.fields.file.url"
+            [alt]="data.fields.heroImg.fields.title"></div>
+
+      </div>
+    </div>
+  </div>
+  <div id="page2">
+    <div class="feature-section whatI" >
+    <h3>project features</h3>
+
+      <div class="feature-layout">
+        <div class="feature-card">
+          <div class="top">Fast Delivery</div>
+          <div class="text">
+            <p>
+              Get your designs <strong>one at a time</strong> with lighting fast pace. Our turnaround time for
+              individual requests is 2 business days on average.
+            </p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="top">Test</div>
+          <div class="text">Test</div>
+        </div>
+        <div class="feature-card">
+          <div class="top">Test</div>
+          <div class="text">Test</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,155 @@
+.hero {
+  &-tittle-one {
+    font-size: 7.5vw;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin-bottom: 48px;
+  }
+}
+
+.boxes {
+  display: flex;
+
+  .box {
+    min-width: 500px;
+    background: lightblue;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid black;
+  }
+}
+
+
+
+
+
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  min-height: 81px;
+  border-top: 2px solid #f44;
+  border-bottom: 2px solid #f44;
+  top: calc(100% - 81px);
+
+  .marquee-container {
+    width: 200%;
+    display: flex;
+    align-items: center;
+    grid-column-gap: 35px;
+    grid-row-gap: 35px;
+    animation: marquee 15s linear infinite;
+    position: absolute;
+    padding: 40px 0px;
+    height: 100%;
+    inset: 0;
+
+    .marquee-part {
+      font-size: 3vw;
+      float: left;
+      color: #f44;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+  }
+}
+
+
+@keyframes marquee {
+  0% {
+    left: 0;
+  }
+
+  100% {
+    left: -100%;
+  }
+}
+
+
+
+.projects-layout {
+  display: flex;
+  grid-gap: 30px;
+}
+
+.projects-card {
+  grid-row-gap: 20px;
+  background-color: #fff;
+  border: 2px solid #000;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 30px 30px;
+  height: 100%;
+  width: 33%;
+
+  .project-title {
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 15px;
+    font-weight: 400;
+    color: black;
+  }
+
+  .project-title-short {
+    color: #000;
+    margin-bottom: 0;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+
+  .project-link {
+    width: 60px;
+    height: 60px;
+    background-color: #f4e5fc;
+    border: 1px solid #000;
+    border-radius: 100%;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: box-shadow .35s;
+    display: flex;
+    svg {
+      transition: 0.3s ease all;
+    }
+
+    &:hover {
+      transition: 0.3s ease;
+      box-shadow: 0 0.2rem 0 0 #000;
+      svg {
+        transition: 0.3s ease all;
+        margin-left: 8px;
+      }
+    }
+  }
+
+  .card-top {
+    margin-bottom: 50px;
+  }
+  .project-image {
+    width: 100%;
+    max-height: 304px;
+    overflow: hidden; 
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  } 
+
+}
+
+.whatI {
+  h3 {
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    font-weight: 500;
+    font-size: 3vw;
+    text-transform: capitalize;
+  }
+}

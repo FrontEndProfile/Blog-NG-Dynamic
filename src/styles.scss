@@ -1,0 +1,171 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Aeonik';
+  src: url('https://assets.website-files.com/64084ee91f0d8b9e0e7b6a21/6442574d73b25b2318bfdcbc_Aeonik-Bold.woff2') format('woff2'), url('https://assets.website-files.com/64084ee91f0d8b9e0e7b6a21/6442574d167de0443c06282d_Aeonik-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aeonik';
+  src: url('https://assets.website-files.com/64084ee91f0d8b9e0e7b6a21/6442578131f427580463d93e_Aeonik-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aeonik';
+  src: url('https://assets.website-files.com/64084ee91f0d8b9e0e7b6a21/644257adcdcf54b440bda7f2_Aeonik-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Aeonik';
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Aeonik';
+}
+
+
+body {
+  background: #e4e0dd;
+  color: #000000;
+  // padding-block: 15px;
+}
+
+.container {
+  width: calc(100% - 10%);
+  margin-inline: auto;
+}
+
+#main {
+  position: relative;
+  // overflow: hidden;
+  // background-color: red;
+}
+
+#page {
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  position: relative;
+  z-index: 999;
+}
+
+#page1,
+#page2 {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #e7e6f6;
+  padding: 100px 150px;
+  border-bottom: 2px solid #f44;
+}
+
+#page2 {
+  background: #f9f9f9;
+}
+
+canvas {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background: #e4e0dd;
+}
+
+.fixed-hero {
+  position: absolute;
+  inset: 0;
+  // background: #0000009f;
+  padding-block: 40px;
+}
+
+.feature {
+  &-section {}
+
+  &-layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    grid-column-gap: 20px;
+  }
+
+  &-card {
+    min-height: 295px;
+    border: 2px solid #000;
+    width: 100%;
+    max-width: 403px;
+
+    .top {
+      border-bottom: 2px solid #000;
+      padding: 30px 35px;
+      font-size: 20px;
+      font-weight: 500;
+
+      background-color: #deff6e;
+    }
+
+    .text {
+      min-height: 290px;
+      grid-row-gap: 20px;
+      flex-direction: column;
+      padding: 35px 20px 0;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+      p {
+        color: #1c1d20;
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+    }
+  }
+}
+
+
+
+
+
+
+.d-n {
+  display: none;
+}
+
+.card {
+  // display: none;
+  max-width: 18rem;
+  padding: 1rem;
+
+  &-image {
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+
+body::-webkit-scrollbar {
+  display:none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+ -ms-overflow-style: none; /* IE and EDGE */;
+  scrollbar-width: none; /* Firefox */
+}
