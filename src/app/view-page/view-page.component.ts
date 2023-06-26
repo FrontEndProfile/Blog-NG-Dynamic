@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ContentService } from '../services/content.service'
-import { Observable } from 'rxjs';
+import { Component, inject, OnInit } from '@angular/core';
+import { Firestore, collection, collectionData, addDoc, deleteDoc, doc, updateDoc, deleteField, setDoc, getDoc } from '@angular/fire/firestore'; // get data [collection , collectionData ]
+import { Observable } from 'rxjs'; // data binding for used like API's
+
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { data } from 'jquery';
 // import * as $ from "jquery"
 // import { gsap } from "gsap";
 
@@ -21,10 +24,11 @@ export class ViewPageComponent implements OnInit {
 
   blogDataId$: Observable<any> | undefined;
 
-  test:any
+  test: any
 
-  constructor(private route: ActivatedRoute, private contentfullservice: ContentService) {
-  }
+  product: any;
+
+  constructor(private route: ActivatedRoute, private firestore: Firestore) { }
 
 
 
@@ -34,15 +38,14 @@ export class ViewPageComponent implements OnInit {
       nextSectionElement.scrollIntoView({ behavior: 'smooth' });
     }
   }
-  
-  
+
   ngOnInit(): void {
-    this.route.params.subscribe(
-      params => {
-        const id = params['id'];
-        this.blogDataId$ = this.contentfullservice.getEntryById(id)
-      }
-    )
+    // this.route.params.subscribe(
+    //   params => {
+    //     const id = params['id'];
+    //     this.blogDataId$ = this.contentfullservice.getEntryById(id)
+    //   }
+    // )
     // add if not reload page then first reload page this
     // if (window.location.href.indexOf('reload') == -1) {
     //   window.location.replace(window.location.href + '?reload');
@@ -63,8 +66,40 @@ export class ViewPageComponent implements OnInit {
     // $('html').removeAttr('class');
 
 
-    this.test = this.blogDataId$
-    
+    // this.test = this.blogDataId$
+
+    // this.route.paramMap.subscribe(async (params) => {
+    //   const productId = params.get('id');
+    //   if (productId) {
+    //     const productDoc = doc(this.firestore, 'product', productId);
+    //     const productSnapshot = await getDoc(productDoc);
+    //     if (productSnapshot.exists()) {
+    //       this.product = productSnapshot.data();
+    //     console.log('Document Data:', this.blogDataId$);
+
+    //     } else {
+    //       console.log('Product not found');
+    //     }
+    //   }
+    // });
+
+    this.route.paramMap.subscribe(async (params) => {
+      const productId = params.get('id');
+      if (productId) {
+        const productDoc = doc(this.firestore, 'product', productId);
+        const productSnapshot = await getDoc(productDoc);
+        if (productSnapshot.exists()) {
+          this.product = productSnapshot.data();
+          console.log(this.product.heroImg);
+        } else {
+          console.log('Product not found');
+        }
+      }
+    });
+    $('video').prop('muted', true);
+
+
   }
 
 }
+

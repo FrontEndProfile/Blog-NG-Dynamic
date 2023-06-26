@@ -3,25 +3,20 @@
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
   </div>
-  <!-- <div  *ngIf="blogDataId$ | async as DataId">
-    <pre>
-      {{DataId | json}}
-    </pre>
-  </div> -->
   <div class="first-intro">
     <section class="View">
       <div class="View-hero">
         <div class="View-video" data-aos="hero-back" data-aos-duration="1200">
-          <video loop muted autoplay class="" width="100%" *ngIf="blogDataId$ | async as DataId">
-            <source [src]="DataId.fields.bannerVedio.fields.file.url" type="video/mp4">
+          <video loop muted autoplay class="" width="100%">
+            <source *ngIf="product" [src]="product.heroImg[1]" type="video/mp4">
           </video>
         </div>
         <div class="view-overlay">
           <div class="container">
             <div class="view-tittle" data-aos="hero-tittle" data-aos-delay="900" data-aos-duration="1500"
-              *ngIf="blogDataId$ | async as DataId">{{DataId.fields.heroHead}}</div>
-            <div class="view-content" data-aos="hero-tittle" data-aos-delay="3000" data-aos-duration="3000"
-              *ngIf="blogDataId$ | async as DataId">{{DataId.fields.heroContent}}</div>
+            *ngIf="product">{{product.heroHead}}</div>
+            <div class="view-content" data-aos="hero-tittle" data-aos-delay="1500" data-aos-duration="3000"
+            *ngIf="product">{{product.heroContent}}</div>
             <div (click)="scrollToNextSection()" class="scroll-link">
               <div class="box">
                 <span></span>
@@ -39,52 +34,51 @@
 
     <div class="panel">
       <div class="card">
-        <div class="content" *ngIf="blogDataId$ | async as DataId">
-          <h1>{{DataId.fields.frameTittle}}</h1>
-          <p>{{DataId.fields.frameContent}}</p>
-        </div>
-        <div class="media" *ngIf="blogDataId$ | async as DataId">
-          <img [src]="DataId.fields.frameIntro.fields.file.url" [alt]="DataId.fields.heroImg.fields.title">
-        </div>
-      </div>
-    </div>
-
-    <div class="panel">
-      <div class="card">
-        <div class="card-img" *ngIf="blogDataId$ | async as DataId">
-          <img [src]="DataId.fields.frameOne.fields.file.url" [alt]="DataId.fields.heroImg.fields.title">
+        <div class="content" *ngIf="product">
+          <h1>{{product.frameTittle}}</h1>
+          <p>{{product.frameContent}}</p>
+        </div> 
+        <div class="media">
+          <img *ngIf="product" [src]="product.heroImg[2]" alt="frameImg">
         </div>
       </div>
     </div>
 
     <div class="panel">
       <div class="card">
-        <div class="card-img" *ngIf="blogDataId$ | async as DataId">
-          <img [src]="DataId.fields.frameTwo.fields.file.url" [alt]="DataId.fields.heroImg.fields.title">
+        <div class="card-img">
+          <img *ngIf="product" [src]="product.heroImg[3]" alt="frameImg">
         </div>
       </div>
     </div>
 
     <div class="panel">
       <div class="card">
-        <div class="card-img" *ngIf="blogDataId$ | async as DataId">
-          <img [src]="DataId.fields.frameThree.fields.file.url" [alt]="DataId.fields.heroImg.fields.title">
+        <div class="card-img">
+          <img *ngIf="product" [src]="product.heroImg[4]" alt="frameImg">
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="card">
+        <div class="card-img">
+          <img *ngIf="product" [src]="product.heroImg[5]" alt="frameImg">
         </div>
       </div>
     </div>
 
   </div>
 
-  <div class="last-intro" *ngIf="blogDataId$ | async as DataId"
-    [ngStyle]="{'background-image': 'url(' + DataId.fields.viewLastBanner.fields.file.url + ')'}">
+  <div class="last-intro" *ngIf="product" [ngStyle]="{'background-image': 'url(' + product.heroImg[6] + ')'}">
     <div class="intro-content">
-      <h1 data-aos="last-text" data-aos-delay="100" data-aos-duration="1200">{{DataId.fields.viewLastIntroTittle}}</h1>
-      <p data-aos="last-text" data-aos-delay="100" data-aos-duration="1200">{{DataId.fields.viewLastIntroContent}}</p>
-
-
+      <h1 data-aos="last-text" data-aos-delay="100" data-aos-duration="1200">{{product.viewLastIntroTittle}}</h1>
+      <p data-aos="last-text" data-aos-delay="100" data-aos-duration="1200">{{product.viewLastIntroContent}}</p>
     </div>
-
   </div>
 
 
+</div>
+<div *ngIf="!product">
+  <p>Product not found</p>
 </div>

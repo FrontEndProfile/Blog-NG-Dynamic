@@ -45,6 +45,10 @@ body {
   color: #000000;
   // padding-block: 15px;
 }
+input:focus {
+  outline: none; /* Remove outline */
+  box-shadow: none; /* Remove shadow */
+}
 
 .container {
   width: calc(100% - 10%);
