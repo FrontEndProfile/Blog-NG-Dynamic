@@ -42,3 +42,34 @@
     }
   }
 }
+
+.viewCardsList {
+  padding-block: 30px;
+}
+
+.product-listing {
+  background: rgb(248, 237, 227);
+  color: black;
+  display: flex;
+  align-items: center;
+  max-width: 300px;
+  padding: 22px 18px;
+  a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+  }
+  button {
+    border: 1px solid #000;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 8px 14px;
+    background: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    img {
+      max-width: 22px;
+    }
+  }
+}

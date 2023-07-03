@@ -22,11 +22,13 @@ export class ViewPageComponent implements OnInit {
   myScriptElement: HTMLScriptElement | undefined;
   element: any;
 
-  blogDataId$: Observable<any> | undefined;
-
-  test: any
 
   product: any;
+  showUpdateForm = false;
+  updatedProduct: any = {};
+  editId: any
+  productId: any;
+  products: Observable<any[]> | undefined;
 
   constructor(private route: ActivatedRoute, private firestore: Firestore) { }
 
@@ -39,64 +41,70 @@ export class ViewPageComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    // this.route.params.subscribe(
-    //   params => {
-    //     const id = params['id'];
-    //     this.blogDataId$ = this.contentfullservice.getEntryById(id)
-    //   }
-    // )
-    // add if not reload page then first reload page this
-    // if (window.location.href.indexOf('reload') == -1) {
-    //   window.location.replace(window.location.href + '?reload');
-    // }
+  // Update btn
+  openUpdateForm() {
+    this.updatedProduct = {
+      heroHead: this.product.heroHead,
+      heroContent: this.product.heroContent,
+      frameTittle: this.product.frameTittle,
+      frameContent: this.product.frameContent,
+      viewLastIntroTittle: this.product.viewLastIntroTittle,
+      viewLastIntroContent: this.product.viewLastIntroContent,
+    };
+    this.showUpdateForm = true;
+  }
+  saveUpdate() {
+    const updatedProduct = { ...this.product }; // Create a new copy of the product object
+    Object.assign(updatedProduct, this.updatedProduct); // Merge the updated values from updatedProduct into the copy
+    this.onUpdateClicked(updatedProduct); // Pass the updated product object to the update function
+    this.product = updatedProduct; // Update the current product with the updated values
+    this.showUpdateForm = false;
+  }
+  onUpdateClicked(updatedData: any) {
+    const productDoc = doc(this.firestore, 'product', this.productId);
+    // const productDoc = doc(this.firestore, 'product', 'jeA78qVrVHwaYXfLsWca');
+    console.log('Update clicked');
+    console.log('Product Update ID:', this.productId);
 
-    // $(document).ready(function () {
-    // $(document).ready(function () {
-    //   var s = document.createElement("script");
-    //   s.type = "text/javascript";
-    //   s.src = "assets/js/locomotive-scroll.js";
-    //   $("app-home").append(s);
-    // });
+    updateDoc(productDoc, updatedData)
+      .then(() => {
+        console.log('Product updated successfully');
+      })
+      .catch((error) => {
+        console.error('Error updating product:', error);
+      });
+  }
+
+  cancelUpdate() {
+    this.showUpdateForm = false;
+  }
+  
+
+  ngOnInit(): void {
     var s = document.createElement("script");
     s.type = "text/javascript";
     s.src = "/assets/js/view.js";
     $("body").append(s);
-    // });
-    // $('html').removeAttr('class');
-
-
-    // this.test = this.blogDataId$
-
-    // this.route.paramMap.subscribe(async (params) => {
-    //   const productId = params.get('id');
-    //   if (productId) {
-    //     const productDoc = doc(this.firestore, 'product', productId);
-    //     const productSnapshot = await getDoc(productDoc);
-    //     if (productSnapshot.exists()) {
-    //       this.product = productSnapshot.data();
-    //     console.log('Document Data:', this.blogDataId$);
-
-    //     } else {
-    //       console.log('Product not found');
-    //     }
-    //   }
-    // });
+    $('video').prop('muted', true);
 
     this.route.paramMap.subscribe(async (params) => {
-      const productId = params.get('id');
-      if (productId) {
-        const productDoc = doc(this.firestore, 'product', productId);
+      // const productId = params.get('id');
+      this.productId = params.get('id');
+      if (this.productId) {
+        const productDoc = doc(this.firestore, 'product', this.productId);
         const productSnapshot = await getDoc(productDoc);
         if (productSnapshot.exists()) {
           this.product = productSnapshot.data();
-          console.log(this.product.heroImg);
+          console.log('Product:', this.product);
+          console.log('Product ID:', this.productId);
+          console.log(this.productId);
         } else {
           console.log('Product not found');
         }
       }
     });
-    $('video').prop('muted', true);
+
+
 
 
   }

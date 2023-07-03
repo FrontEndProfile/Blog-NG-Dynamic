@@ -38,16 +38,16 @@
       </form>
     </div>
 
+    <div class="viewCardsList">
+      <h4>All Cards</h4><br>
+      <div class="product-cards">
+        <div *ngFor="let product of items$ | async" class="product-listing">
+          <a [routerLink]="['/view', product.id]">{{ product.heroHead }}</a>
+          <button (click)="onDeleteItemClick(product.id)"><img src="../../assets/images/delete.png" alt=""></button>
+        </div>
+      </div>
+    </div>
+
+    
   </div>
 </section>
-
-
-
-
-
-<div class="product-cards">
-  <div *ngFor="let product of items$ | async" class="product-card">
-    <a [routerLink]="['/view', product.id]">{{ product.heroHead }}</a>
-    <button (click)="onDeleteItemClick(product.id)">{{product.id}}</button>
-  </div>
-</div>
