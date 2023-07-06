@@ -46,7 +46,7 @@ window.addEventListener("resize", () => {
   render();
 });
 
- 
+
 function files(index) {
   const data = `
   /assets/images/1.webp
@@ -240,21 +240,63 @@ ScrollTrigger.create({
 
 
 
-    // ADD JS FILES THIS Component page
-    // create Elm for Scr-tag in Component
-    // this.myScriptElement = document.createElement("script");
-    // this.myScriptElement.src = "/assets/js/locomotive-scroll.js"
-    // document.body.appendChild(this.myScriptElement)
-    // // next
-    // this.myScriptElement = document.createElement("script");
-    // this.myScriptElement.src = "/assets/js/gsap.min.js"
-    // document.body.appendChild(this.myScriptElement)
-    // // next
-    // this.myScriptElement = document.createElement("script");
-    // this.myScriptElement.src = "/assets/js/ScrollTrigger.min.js"
-    // document.body.appendChild(this.myScriptElement)
-    // custom modal last
-    // this.myScriptElement = document.createElement("script");
-    // this.myScriptElement.src = "/assets/js/code.js"
-    // this.myScriptElement.type = "module";
-    // document.body.appendChild(this.myScriptElement)
+
+
+
+const card = gsap.utils.toArray('.card')[0]
+const topSection = document.querySelector('.cardy')
+
+const cardCreate = gsap.utils.toArray('.cardCreate')[0]
+const sectionCreate = document.querySelector('.cardyCreate')
+
+const cardView = gsap.utils.toArray('.cardView')[0]
+const sectionView = document.querySelector('.cardyView')
+
+topSection.addEventListener('mousemove', (event) => {
+  const mouseX = -((window.innerWidth / 2) - event.pageX) / 30
+  const mouseY = ((window.innerHeight / 2) - event.pageY) / 10
+
+  gsap.to(card, {
+    duration: 0.5,
+    rotationY: mouseX,
+    rotationX: mouseY,
+    ease: 'power2.out'
+  })
+})
+
+// create card 3d
+sectionCreate.addEventListener('mousemove', (event) => {
+  const mouseX = -((window.innerWidth / 2) - event.pageX) / 60
+  const mouseY = ((window.innerHeight / 2) - event.pageY) / 30
+
+  gsap.to(cardCreate, {
+    duration: 0.5,
+    rotationY: mouseX,
+    rotationX: mouseY,
+    ease: 'power2.out'
+  })
+})
+
+// view card 3d
+sectionView.addEventListener('mousemove', (event) => {
+  const mouseX = -((window.innerWidth / 2) - event.pageX) / 70
+  const mouseY = ((window.innerHeight / 2) - event.pageY) / 50
+
+  gsap.to(cardView, {
+    duration: 0.5,
+    rotationY: mouseX,
+    rotationX: mouseY,
+    ease: 'power2.out'
+  })
+})
+
+
+
+
+
+
+// gsap.from(".test", {
+// 	color:'red',
+// 	delay: '1',
+//   x: 100
+// });

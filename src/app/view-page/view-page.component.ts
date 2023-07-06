@@ -103,11 +103,6 @@ export class ViewPageComponent implements OnInit {
         }
       }
     });
-
-
-
-
   }
-
 }
 

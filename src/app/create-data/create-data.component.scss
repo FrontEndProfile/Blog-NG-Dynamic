@@ -1,5 +1,6 @@
 .fromsData {
   padding: 5vw 2vw;
+  background: #e7e6f6;
 
   .fromsDataLayout {
     background-color: #E9DDFF;
@@ -27,10 +28,10 @@
         border-radius: 1.6rem;
         box-shadow: 3px 3px 0 #000 !important;
         font-size: 20px;
-        &:focus-within {
 
-        }
+        &:focus-within {}
       }
+
       button {
         box-shadow: 3px 3px 0 #000 !important;
         border: 2px solid #000 !important;
@@ -45,6 +46,17 @@
 
 .viewCardsList {
   padding-block: 30px;
+
+  .product-cards {
+    display: flex;
+    align-items: center;
+    grid-gap: 15px;
+    flex-wrap: wrap;
+
+    a {
+      margin-right: 30px;
+    }
+  }
 }
 
 .product-listing {
@@ -52,8 +64,11 @@
   color: black;
   display: flex;
   align-items: center;
-  max-width: 300px;
+  width: 400px;
   padding: 22px 18px;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
   a {
     display: block;
     width: 100%;
@@ -61,13 +76,16 @@
     color: black;
     font-weight: 500;
   }
+
   button {
-    border: 1px solid #000;
+    border: 1px solid #0000008a;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     padding: 8px 14px;
     background: transparent;
     border-radius: 8px;
     cursor: pointer;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 5px 29px 0px;
+
     img {
       max-width: 22px;
     }

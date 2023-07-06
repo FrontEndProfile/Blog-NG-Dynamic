@@ -56,8 +56,34 @@
   </div>
 
   <div class="track" data-aos="swipe-back" data-aos-duration="1200" id="next">
+    <!-- UPDATE FORMS FRAME HERO -->
+    <button class="UpdateBtn frame" (click)="openUpdateForm()"><img src="../../assets/images/edit.png"
+        alt="Update"></button>
 
+    <div *ngIf="showUpdateForm" class="frameLayer frame">
+      <button type="button" (click)="cancelUpdate()" class="cancelPop frame">
+        <img src="../../assets/images/close.png" alt="icon">
+      </button>
+
+      <form (submit)="saveUpdate()">
+        <div class="heroEdit framy">
+          <div class="">
+            <textarea type="text" [(ngModel)]="updatedProduct.frameTittle" name="frameTittle" class="view-tittle"
+              rows="2"></textarea>
+
+            <textarea type="text" [(ngModel)]="updatedProduct.frameContent" name="frameContent" class="view-content"
+              rows="10"></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="savePop frame">
+          <img src="../../assets/images/tick.png" alt="icon">
+        </button>
+      </form>
+    </div>
+    <!-- UPDATE FORMS FRAME HERO END -->
     <div class="panel">
+
       <div class="card">
         <div class="content" *ngIf="product">
           <h1>{{product.frameTittle}}</h1>
@@ -94,32 +120,6 @@
     </div>
 
 
-    <!-- UPDATE FORMS FRAME HERO -->
-    <button class="UpdateBtn frame" (click)="openUpdateForm()"><img src="../../assets/images/edit.png"
-        alt="Update"></button>
-
-    <div *ngIf="showUpdateForm" class="frameLayer frame">
-      <button type="button" (click)="cancelUpdate()" class="cancelPop frame">
-        <img src="../../assets/images/close.png" alt="icon">
-      </button>
-
-      <form (submit)="saveUpdate()">
-        <div class="heroEdit framy">
-          <div class="">
-            <input type="text" [(ngModel)]="updatedProduct.frameTittle" name="frameTittle" class="view-tittle"
-              style="text-transform: uppercase;">
-            <input type="text" [(ngModel)]="updatedProduct.frameContent" name="frameContent" class="view-content"
-              style="text-transform: capitalize;">
-          </div>
-        </div>
-
-        <button type="submit" class="savePop frame">
-          <img src="../../assets/images/tick.png" alt="icon">
-        </button>
-      </form>
-    </div>
-    <!-- UPDATE FORMS FRAME HERO END -->
-
 
   </div>
 
@@ -136,10 +136,11 @@
         <form (submit)="saveUpdate()">
           <div class="heroEdit">
             <div class="container">
-              <input type="text" [(ngModel)]="updatedProduct.viewLastIntroTittle" name="frameTittle" class="view-tittle"
-                style="text-transform: capitalize;">
-              <input type="text" [(ngModel)]="updatedProduct.viewLastIntroContent" name="frameContent"
-                class="view-content" style="text-transform: capitalize;">
+              <textarea type="text" name="frameTittle" [(ngModel)]="updatedProduct.viewLastIntroTittle"
+                class="view-tittle" cols="20" rows="2"></textarea>
+
+              <textarea type="text" name="frameContent" [(ngModel)]="updatedProduct.viewLastIntroContent"
+                class="view-content" rows="1"></textarea>
             </div>
           </div>
 
@@ -157,4 +158,7 @@
 </div>
 <div *ngIf="!product">
   <p>Product not found</p>
+</div>
+<div class="minScreen">
+  <p>Use Big Screen on <span>1500px</span></p>
 </div>
