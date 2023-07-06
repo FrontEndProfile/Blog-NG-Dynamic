@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit,AfterViewInit } from '@angular/core';
 import { Firestore, collection, collectionData, addDoc, deleteDoc, doc, updateDoc, deleteField, setDoc } from '@angular/fire/firestore'; // get data [collection , collectionData ]
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { AngularFireStorage, AngularFireStorageModule, AngularFireStorageReference } from '@angular/fire/compat/storage';
@@ -15,7 +15,7 @@ import * as $ from "jquery"
   styleUrls: ['./home.component.scss'],
 
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit,AfterViewInit {
   //add scr tag from assets path
   myScriptElement: HTMLScriptElement | undefined;
 
@@ -62,6 +62,17 @@ export class HomeComponent implements OnInit {
       $("app-home").append(s);
     });
     // before end
+  }
+
+
+  showLoader: boolean = true;
+
+
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.showLoader = false;
+    }, 3000); // Adjust the delay as needed
   }
 
 }
