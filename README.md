@@ -1,4 +1,4 @@
-# CMSBlogDynamic
+# CMS Blog Dynamic
 
 This project <a href="https://blog-ng-dynamic.vercel.app/">View Live</a>
 
