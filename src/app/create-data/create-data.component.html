@@ -43,7 +43,7 @@
       <div class="product-cards">
         <div *ngFor="let product of items$ | async" class="product-listing">
           <a [routerLink]="['/view', product.id]" target="_blank">{{ product.heroHead }}</a>
-          <button (click)="onDeleteItemClick(product.id)"><img src="../../assets/images/delete.png" alt=""></button>
+          <button (click)="onDeleteItemClick(product.id)" disabled><img src="../../assets/images/delete.png" alt=""></button>
         </div>
       </div>
     </div>
